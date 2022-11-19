@@ -1,0 +1,31 @@
+body {
+	text-align: center;
+	margin-left: 12.5%;
+	margin-right: 12.5%;
+	width: 75%;
+	border: 2px solid blue;
+  }
+
+header {
+	background-color: light gray;
+  }
+
+h1 {
+	margin: 0;
+  }
+
+h2 {
+	font-family: italic;
+  }
+
+article {
+	font-family: monospace;
+  }
+
+video {
+	width: 75%;
+  }
+
+footer {
+	background-color: light gray;
+  }
