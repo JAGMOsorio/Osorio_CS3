@@ -1,0 +1,18 @@
+<DOCTYPE html>
+<html>
+	<body>
+		<img id="demo" src="images/monochrome.jpg" height="500px" width=365px">
+		<br>
+		<button onclick = "oui()">Color it!</button>
+		<button onclick = "non()">Bleach it back</button>
+		<script>
+			function non() {
+				document.getElementById("demo").src = "images/monochrome.jpg";
+			}
+			
+			function oui() {
+				document.getElementById("demo").src = "images/colored.jpg";
+			}
+		</script>
+	</body>
+</html>
