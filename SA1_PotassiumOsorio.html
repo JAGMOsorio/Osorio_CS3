@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Toss coin</title>
+        <style>
+        	body {background: navy; 
+            	text-align: center;
+            	font-family: arial;
+                color: white;
+            }
+            button {padding: 10px; background:violet }
+            span {color: yellow}
+            #coin, h5 {color: yellow; }
+            #coin { background: gray; 
+            	width: 25px; 
+                height: 25px;
+                padding: 25px;          
+                border: 5px dashed darkgray;
+                border-radius: 50%;
+                margin: 0 auto;
+                
+            }
+            
+        </style>
+
+	</head>
+	<body onload="getGuess()">
+        <h1> Heads or Tail? </h1>
+        <h2 onclick="getGuess()"> Click here to change your Guess: <span id="guess"> </span></h2>
+        <h2 id="coin" onclick="cflip()"> H </span></h2>   
+        <h5> Click on the coin above to randomly change its face and compare with your guess </h5> 
+        <script>
+            var getGuess = function() {
+                uGuess = prompt("Type H for head and T for tail","H");
+                uGuess.toUpperCase;
+                (uGuess != "H" && uGuess != "T") ?	alert("Wrong Input"):
+                    guess.innerHTML = uGuess;
+            }
+
+            function cflip() {
+                var random = ((Math.random() * 100).toFixed(0))%2;
+                document.getElementById("coin").innerHTML = random;
+                if(random == 0){
+			document.getElementById("coin").innerHTML = "H";
+            }
+                if (random == 1){
+			document.getElementById("coin").innerHTML = "T";
+			}
+		if (uGuess == "T" && random == 1 || uGuess == "H" && random == 0){
+			alert("Congrats, now go do something better than this huhu");
+			}
+
+		else {
+			alert("Waste of time, wasted paper. Shame, shame. (Sir nat, 2023)");
+			}
+        }
+        </script>
+	</body>
+</html>
