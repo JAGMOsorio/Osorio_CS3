@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Multiplication Table</title>
+    <style>
+    table {
+      border-collapse: collapse;
+      border: 5px double grey;
+    }
+    th, td {
+      border: 2px double grey;
+      padding: 5px;
+      text-align: center;
+    }
+    </style>
+  </head>
+  <body>
+    <p>[enter a number between 2 and 10:]</p>
+    <form>
+      <input type="number" id="start" name="start" min="1" max="10" />
+      by
+      <input type="number" id="end" name="end" min="1" max="10" />
+      <br>
+      <br>
+      <button type="button" onclick="multiTableOutput()">Click here when ready!</button>
+    </form>
+    <br>
+    <br>
+    <div id="genTable"></div>
+    <script>
+      function multiTableOutput() {
+      var start = document.getElementById("start").value;
+      var end = document.getElementById("end").value;
+
+      if (start < 2 || start > 10 || end < 2 || end > 10) {
+        alert("Please enter numbers between 2 and 10");
+        document.getElementById("genTable").innerHTML = "";
+        return 0;
+      }
+
+      var multiplyTable = "<table>";
+      for (var i = 1; i <= start; i++) {
+        multiplyTable += "<tr>";
+        for (var j = 1; j <= end; j++) {
+          multiplyTable += "<td>" + i*j + "</td>";
+        }
+        multiplyTable += "</tr>";
+      }
+      multiplyTable += "</table>";
+      document.getElementById("genTable").innerHTML = multiplyTable;
+    }
+    </script>
+  </body>
+</html>
