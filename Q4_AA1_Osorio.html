@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <body onload="geneticCode()">
+    <script>
+        let scodon = ["Met", "STOP", "Leu", "Arg", "Ser", "Gly", "Val", "Pro", "Thr", "Ala", "Ile", "Phe", "Tyr", "His", "Gln", "Asn", "Lys", "Asp", "Glu", "Cys", "Trp" ];
+        let codons = [ ["AUG"], ["UGA", "UAA", "UAG"], ["UUA", "UUG", "CUU", "CUC", "CUA","CUG"], ["CGU", "CGC", "CGA", "CGG", "AGA", "AGG"], ["UCU", "UCC", "UCA", "UCG", "AGU", "AGC"], ["GGU", "GGC", "GGA", "GGG"], ["GUU", "GUC", "GUA", "GUG"], ["CCU", "CCC", "CCA", "CCG"], ["ACU", "ACC", "ACA", "ACG"], ["GCU", "GCC", "GCA", "GCG"], ["AUU", "AUC", "AUA"], ["UUU", "UUC"], ["UAU", "UAC"], ["CAU", "CAC"], ["CAA", "CAG"], ["AAU", "AAC"], ["AAA", "AAG"], ["GAU", "GAC"], ["GAA", "GAG"], ["UGU", "UGC"], ["UGG"] ];
+
+        function geneticCode() {
+            let mRNA = prompt("Enter mRNA sequence", "").toUpperCase();
+            let arr = [];
+            let aminoAcids = [];
+            var startCodon;
+
+            for (let i = 0; i < mRNA.length - 2; i++) {
+                let codon = mRNA.substring(i, i+3);
+                if (codon == "AUG") {
+                    mRNA = mRNA.slice(i);
+                    startCodon = true;
+                    break;
+                }
+            }
+
+            if (!startCodon) {
+              document.write("\n <br> [" + "No Starting Codon" + "]");
+              return;
+            }
+          
+            for (let i = 0; i < mRNA.length - 2; i+=3) {
+                let codon = mRNA.substring(i, i+3);
+                if (codon == "UGA" || codon == "UAA" || codon == "UAG") {
+                    mRNA = mRNA.slice(0, i+3);
+                    break;
+                }
+            }
+          
+            for (let i = 0; i < mRNA.length - 2; i+=3) {
+                let codon = mRNA.substring(i, i+3);
+                let aminoAcid;
+                for (let j = 0; j < codons.length; j++) {
+                    if (codons[j].includes(codon)) {
+                        aminoAcid = scodon[j];
+                        break;
+                    }
+                }
+                arr.push(codon);
+                aminoAcids.push(aminoAcid);
+            }
+
+            document.write("\n <br> [" + arr.join(", ") + "]");
+            for (let i = 0; i < arr.length; i++) {
+                document.write("\n <br>" + arr[i] + " ---> " + aminoAcids[i]);
+            }
+        }
+    </script>
+  </body>
+</html>
