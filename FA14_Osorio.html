@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>*pretends i thought of something to put here*</title>
+    <style>
+        
+		h1 {
+			color: #0c49f2;
+		}
+		
+        body {
+            background-image: url('https://i.pinimg.com/564x/20/3f/c3/203fc3c80b4ba7fab5b1c057641fb39d.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: 0cm -47cm;
+			background-attachment: fixed;
+        }
+
+        label, input, select {
+            padding: 4px;
+            margin-bottom: 5px;
+        }
+
+        fieldset {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        form {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+			color: white;
+        }
+
+        #info {
+            z-index: 2;
+            max-width: 600px;
+            text-align: center;
+            margin: 40px auto 0;
+            border-radius: 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+        }
+
+
+        .clearfix {
+            padding-bottom: 40px;
+        }
+
+        button {
+            background-color: #382f2f;
+            border: 1px solid rgb(150, 140, 140);
+            color: rgb(150, 140, 140);
+            padding: 8px;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+            border-radius: 4px;
+}
+
+        button:hover {
+            background-color: rgb(3, 202, 252);
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form method="post" onsubmit="return sendData()">
+        <fieldset>
+            <legend><h1>Sign Up</h1></legend>
+            <p>Please enter the following information below.</p>
+            <hr>
+
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="What's ur name" name="name" id="xname" onblur="checkInput(this)" onfocus="this.style.borderColor = 'green'" required>
+            <br>
+
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="enter username :0" name="username" id="uname" onblur="checkInput(this)" onfocus="this.style.borderColor = 'green'" required>
+            <br>
+
+            <label for="gender"><b>Gender</b></label>
+            <select name="gender" id="gender" onblur="checkInput(this)" onfocus="this.style.borderColor = 'green'" required>
+                <option value=""></option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="wndwy">Rather not say</option>
+            </select>
+            <br>
+
+            <label for="pword"><b>Password</b></label>
+            <input type="password" placeholder="Insert Password here :)" name="password" id="pword" onblur="checkInput(this)" onfocus="this.style.borderColor = 'green'" title="Password must be at least 8 characters" required>
+            <p id="password-error" style="color: red; display: none;">Password must be at least 8 characters long.</p>
+            <br>
+
+            <label for="email"><b>Email</b></label>
+            <input type="email" placeholder="Enter your Email" name="email" id="gmail" onblur="checkInput(this)" onfocus="this.style.borderColor = 'green'" required>
+            <br>
+
+            <label for="address"><b>Address</b></label>
+            <input type="text" placeholder="Enter current address" name="address" id="address" onblur="checkInput(this)" onfocus="this.style.borderColor = 'green'" required>
+            <br>
+
+            <label for="comment"><b>What are your interests?</b></label>
+            <br>
+            <textarea rows="6" cols="33" placeholder="ex: I like ride the cyclone :3" id="interested" onblur="checkInput(this)" onfocus="this.style.borderColor = 'green'" required></textarea>
+
+
+            <div class="clearfix">
+                <button type="button" class="cancelbtn" onclick="clearInput()">Cancel</button> <!--Cancelled daw ung potassium huhu-->
+                <button type="submit" class="signupbtn">Sign Up</button>
+                <button type="button" class="clearbtn" onclick="clearBtn()">Reset Everything</button> 
+				<!-- just like how our love was gone like nothing happened :'( jowk jowk jowk-->
+            </div>
+        </fieldset>
+    </form>
+    <div id="info" style="display:none;"></div>
+    <script>
+        function checkInput(text) {
+            if (text.value === "") {
+            text.style.borderColor = "red";
+            text.style.boxShadow = "0 0 5px red";
+        } else {
+            text.style.borderColor = "green";
+            text.style.boxShadow = "0 0 5px green";
+            }
+        }
+
+        function clearInput() {
+            document.getElementById("xname").value = "";
+            document.getElementById("uname").value = "";
+            document.getElementById("pword").value = "";
+            document.getElementById("gmail").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("interested").value = "";
+            document.getElementById("gender").selectedIndex = 0;
+            var inputs = document.getElementsByTagName("input");
+            var selects = document.getElementsByTagName("select");
+            var textarea = document.getElementsByTagName("textarea");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].style.borderColor = "";
+                inputs[i].style.boxShadow = "";
+            }
+            for (var i = 0; i < selects.length; i++) {
+                selects[i].style.borderColor = "";
+                selects[i].style.boxShadow = "";
+            }
+            for (var i = 0; i < textarea.length; i++) {
+                textarea[i].style.borderColor = "";
+                textarea[i].style.boxShadow = "";
+            }
+        }
+        
+        function clearBtn() {
+            clearInput();
+            document.getElementById("info").style.display = "none";
+        }
+
+        function sendData() {
+            document.getElementById("info").style.display = "block";
+            var name = document.getElementById("xname").value;
+            var username = document.getElementById("uname").value;
+            var psw = document.getElementById("pword").value;
+            var email = document.getElementById("gmail").value;
+            var address = document.getElementById("address").value;
+            var comment = document.getElementById("interested").value;
+
+            var passwordInput = document.getElementById("pword");
+            var passwordError = document.getElementById("password-error");
+
+            if (passwordInput.value.length < 8) {
+                passwordError.style.display = "block";
+                clearInput();
+                document.getElementById("info").style.display = "none";
+            } else {
+                passwordError.style.display = "none";
+            }
+
+            var formData = "<p><b>Name: </b> " + name + "</p>"
+            + "<p><b>Username: </b> " + username + "</p>"
+            + "<p><b>Password: </b> " + psw + "</p>"
+            + "<p><b>Email address: </b> " + email + "</p>"
+            + "<p><b>Current address: </b>" + address + "</p>"
+            + "<p><b>User's interests: </b>" + comment + "</p>";
+
+            document.getElementById("info").innerHTML = formData;
+            
+            clearInput();
+            document.getElementById("info").scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return false;
+        }
+    </script>
+</body>
+
+</html>
